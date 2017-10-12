@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Updating new Plots</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        		.mapTooltip {
+			position : fixed;
+			background-color : #fff;
+			moz-opacity:0.70;
+			opacity: 0.70;
+			filter:alpha(opacity=70);
+			border-radius:10px;
+			padding : 10px;
+			z-index: 1000;
+			max-width: 200px;
+			display:none;
+			color:#343434;
+		}
+
+		.zoomIn, .zoomOut {
+			background-color:#fff;
+			border:1px solid #ccc;
+			color:#000;
+			width:15px;
+			height:15px;
+			line-height: 15px;
+			text-align:center;
+			border-radius:3px;
+			cursor:pointer;
+			position:absolute;
+			top : 10px;
+			font-weight:bold;
+			left : 10px;
+			
+			-webkit-user-select: none; // For Webkit
+			-khtml-user-select: none;
+			-moz-user-select: none; // For Mozilla
+			-o-user-select: none;
+			user-select: none; // Default
+		}
+		
+		.zoomOut {
+			top:30px;
+		}
+
+        .map {
+            /*background-color:#cddee0;*/
+            margin:10px;
+            position:relative;
+        }
+
+        .container {
+            max-width: 800px;
+            margin:auto;
+        }
+
+		body {
+			font-family:Helvetica,Arial,sans-serif;
+		}
+	
+		h1 {
+			color:#5d5d5d;
+			font-size:30px;
+		}
+    </style>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js" charset="utf-8"></script>
+    <script src="../../js/jquery.mapael.min.js" charset="utf-8"></script>
+	<script src="../../js/maps/france_departments.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(function(){
+		    //static test data
+			var data = '{"Dijon" : {"latitude" : 47.323056,"longitude" : 5.041944}}';
+			
+			$(".mapcontainer").mapael({
+				map : {
+					name : "france_departments"
+				},
+				plots:{"Paris":{"latitude":48.86,"longitude":2.3444444444444}}
+			});
+			
+			//File upload and read function
+			function handleFileSelect(evt) {
+				var files = evt.target.files; // FileList object
+				
+				// use the 1st file from the list
+				f = files[0];
+				
+				var reader = new FileReader();
+				
+				// Closure to capture the file information.
+				reader.onload = (function() {
+					return function(e) {
+					  var content = e.target.result;
+					  $('#refresh').on('click', function() {
+						// add information from text file upload
+						// Update some plots and areas attributes ...
+						var updatedOptions = {'areas' : {}, 'plots' : {},
+						// add some new plots ...
+							newPlots: jsonparsing(content), //{"Paris" : { latitude : 48.86,longitude : 2.3444444444444}},
+							animDuration: 1000
+							};
+							$(".mapcontainer").trigger('update', updatedOptions);
+						});
+					  jQuery( '#ms_word_filtered_html' ).val(content);
+					}
+				  })(f);
+				  // Read in the text file.
+				 reader.readAsText(f)
+			  }
+			  
+			 function jsonparsing(data){
+			    localData = JSON.parse(data);
+				//console.log(localData);
+				return localData;
+			 }
+			 
+			document.getElementById('upload').addEventListener('change',handleFileSelect, false);
+		});
+		
+	
+    </script>
+</head>
+<body>
+	<div class="container">
+		<h1>Trigger an 'update'. Protoype v2</h1>
+		<div>
+			<form enctype="multipart/form-data">
+			<input id="upload" type="file"   accept="text/html" name="files[]" size=30 />
+			</form>
+			<textarea class="form-control" rows=5 cols=30 id="ms_word_filtered_html"></textarea>
+		</div>
+			<div class="mapcontainer">
+			   <input type="button" value="Update elements" id="refresh" />
+				<input type="button" value="Update elements2" id="refresh2" />
+				<div class="map">
+					<span>Alternative content for the map</span>
+				</div>
+			</div>
+	</div>
+</body>
+</html>

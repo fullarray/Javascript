@@ -1,0 +1,1 @@
+{"Dijon" : {"latitude" : 47.323056,"longitude" : 5.041944}, "Nice" : {"latitude" : 43.701944444444,"longitude" : 7.2683333333333}}
