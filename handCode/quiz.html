@@ -1,59 +1,63 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>hello</title>
+	<title>Easiest quiz</title>
 </head>
 <body>
-	<form name="myform">
+	<form name="myForm" action="" method="get">
 		<!-- First question -->
 		<label>What is the capital of the United States?</label><br>
-		<input type="radio" name="q1" value="a" />San Francisco<br>
-		<input type="radio" name="q1" value="b" />California<br>
-		<input type="radio" name="q1" value="c" />Washington D.C.<br>
-		<input type="radio" name="q1" value="d" />Miami<br>
+		<input type="radio" name="q1" value="a">San Francisco<br>
+		<input type="radio" name="q1" value="b">California<br>
+		<input type="radio" name="q1" value="c">Washington D.C.<br>
+		<input type="radio" name="q1" value="d">Miami<br>
+		<br>
 		
 		<!-- Second question -->
 		<label>What is the single most important theorem of calculus?</label><br>
-		<input type="radio" name="q2" value="a" />Rolles Theorem<br>
-		<input type="radio" name="q2" value="b" />The Fundamental Theorem of Calculus<br>
-		<input type="radio" name="q2" value="c" />The Chain Rule<br>
-		<input type="radio" name="q2" value="d" />The Anti-derivative<br>
+		<input type="radio" name="q2" value="a" >Rolles Theorem<br>
+		<input type="radio" name="q2" value="b" >The Fundamental Theorem of Calculus<br>
+		<input type="radio" name="q2" value="c" >The Chain Rule<br>
+		<input type="radio" name="q2" value="d" >The Anti-derivative<br>
+		<br>
 		
 		<!-- Third question -->
 		<label>What is not an object-oriented programming language ?</label><br>
-		<input type="radio" name="q3" value="a" />Python<br>
-		<input type="radio" name="q3" value="b" />C#<br>
-		<input type="radio" name="q3" value="c" />Java<br>
-		<input type="radio" name="q3" value="d" />C<br>
+		<input type="radio" name="q3" value="a" >Python<br>
+		<input type="radio" name="q3" value="b" >C#<br>
+		<input type="radio" name="q3" value="c" >Java<br>
+		<input type="radio" name="q3" value="d" >C<br>
 		<br>
 		<!-- Evaluate answers -->
-		<input type="submit" value="Evaluate" onclick="evaluate();"/>
+		<input type="submit" value="Evaluate" onClick="check();">
 	</form>
-	<p>Score: <span id="score">0</span></p>
-	
-	<script>
-		function evaluate(){
-			var q1 = document.myform.q1.value;
-			var q2 = document.myform.q2.value;
-			var q3 = document.myform.q3.value;
-			var score = document.getElementById("score").value;
-			var count=0;
+	<!--<p id="score">0</p>-->
+	<script type="text/javascript">
+	    //window.alert("hello");
+		function check(){
+			//Get answers and store in local variables
+			var q1 = document.forms["myForm"]["q1"].value;
+			var q2 = document.forms["myForm"]["q2"].value;
+			var q3 = document.forms["myForm"]["q3"].value;
+			//var score = document.getElementById("score").value;
+			var count = 0;
 			
-			if(q1 == "c"){
+			//Check questionnaire
+			if(q1=="c"){
+				count++;
+			}
+			if(q2=="b"){
+				count++;
+			}
+			if(q3=="d"){
 				count++;
 			}
 			
-			if(q2 == "b"){
-				count++;
-			}
-			
-			if(q3 == "d"){
-				count++;
-			}
-			
-			score.textContent =  "jello" ;
-			score.innerHTML =  "jello " ;
-			//alert("You answered "+ count + " questions correctly.");
+			//score.textContent =  count;
+			//score.innerHTML =  count;
+			alert("Correct: "+ count);
 		}
+		//widow.evaluate();
 	</script>
 </body>
 </html>
