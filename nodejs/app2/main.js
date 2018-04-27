@@ -4,6 +4,9 @@ const path = require('path');
 
 const{app, BrowserWindow, Menu, ipcMain} = electron;
 
+//set env
+process.env.NODE_ENV = 'production';
+
 let mainWindow;
 let addWindow;
 
@@ -31,8 +34,8 @@ app.on('ready', function(){
 //handles create window
 function createAddWindow(){
 	addWindow = new BrowserWindow({
-		width: 300,
-		height: 200,
+		width: 400,
+		height: 300,
 		title: 'Add shopping list item'
 	});
 	addWindow.loadURL(url.format({
@@ -47,7 +50,8 @@ function createAddWindow(){
 
 //catch add item
 ipcMain.on('item:add', function(e, item){
-	console.log(item);
+	//for troubleshooting
+	//console.log(item);
 	mainWindow.webContents.send('item:add',item);
 	addWindow.close();
 });
