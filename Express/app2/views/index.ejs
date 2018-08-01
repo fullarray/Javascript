@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computer Science Popular Algorithms</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">  
+</head>
+<body>
+  
+  <div class="container">
+  <h3 class="text-center">My Algorithms Library</h3>
+  <form class="form-horizontal" action="/quotes" method="POST">
+    <div class="form-group">
+	 <div class="col-sm-12 col-md-offset-4 col-md-4">
+	  <input class="form-control input-lg" type="text" placeholder="Algorithm Name" name="name">
+     <br/>
+	  <input class="form-control input-lg" type="text" placeholder="Algorithm Purpose" name="quote">
+	  <br/>
+	  <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+      </div>
+	 </div>
+	
+  </form>
+  </div>
+  <hr>
+  <div class="row" style="background: #eee;">
+  <% for(var i=0; i<quotes.length; i++) {%>
+  <div class="col-sm-12 col-md-offset-4 col-md-4" style="background: #fff; display:inline-block; height:18px; width:0.1em;"></div>
+  <div class="col-sm-12 col-md-offset-4 col-md-4 rounded" style="background: #fff;" >
+ 
+  <blockquote >
+  <p><%= quotes[i].quote %></p>
+  <footer><%= quotes[i].name %></footer>
+  </blockquote>
+  
+  </div>
+  
+  <% } %>
+   </div>
+   
+    <!--Original version, but improved for better UI/UX
+	<ul class="quotes">
+  <% for(var i=0; i<quotes.length; i++) {%>
+    <li class="quote">
+      <p><%= quotes[i].name %></p>
+      <p><%= quotes[i].quote %></p>
+    </li>
+  <% } %>
+  </ul>-->
+  
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "app1",
+  "version": "1.0.0",
+  "description": "CRUD app1 sample",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "crud",
+    "js",
+    "json",
+    "javascript",
+    "express",
+    "mongo"
+  ],
+  "author": "swm",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.29"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

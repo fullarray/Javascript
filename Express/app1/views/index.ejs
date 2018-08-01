@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quotes App</title>
+</head>
+<body>
+  <h2>Express Application Sample</h2>
+
+  <h3>Quotes from people:</h3>
+  <ul class="quotes">
+  <% for(var i=0; i<quotes.length; i++) {%>
+    <li class="quote">
+      Name:<span><%= quotes[i].name %></span>, 
+      Quote:<span><%= quotes[i].quote %></span>
+    </li>
+  <% } %>
+  </ul>
+<h3>Enter new quote:</h3>
+  <form action="/quotes" method="POST">
+    <input type="text" placeholder="name" name="name">
+	<br/>
+	<br/>
+    <input type="text" placeholder="quote" name="quote">
+	<br/>
+	<br/>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
