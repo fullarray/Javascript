@@ -38,6 +38,7 @@ MyArray.prototype.print = function(){
 var array = new MyArray();
 array.add(23);
 array.add(41);
+array.add(86);
 array.add(72);
 array.add(90);
 array.print();
