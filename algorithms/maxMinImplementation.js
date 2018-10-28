@@ -8,7 +8,6 @@ for (var i = 0; i < tab.length; i++) {
     if (min > tab[i]) {
         min = tab[i];
     }
-	
     if (max < tab[i]) {
         max = tab[i];
     }
