@@ -9,12 +9,10 @@ import { Headers } from '@angular/http';
   styleUrls: ['./authentication.component.css']
 })
 export class AuthenticationComponent implements OnInit {
-    
   user = {
     username: '',
     password: ''
   }
-  
   private httpOptions = {
 	  headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 	  };
