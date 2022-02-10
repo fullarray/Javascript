@@ -63,7 +63,7 @@
     "webpack-hot-middleware": "^2.18.2",
     "webpack-merge": "^4.1.0",
     "babel-polyfill": "^6.23.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "pace": "0.0.4",
     "pace-progress": "^1.0.2",
     "postcss-custom-media": "^6.0.0",
